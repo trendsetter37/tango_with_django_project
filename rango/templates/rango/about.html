@@ -1,0 +1,17 @@
+{% extends 'rango/base.html' %}
+
+{% comment %}
+	The tango with django 1.7 book exercise
+{% endcomment %}
+
+{% load staticfiles %}
+
+{% block title %}About{% endblock %}
+
+{% block body_block %}
+	<p> This is the about page </p>
+	<img src='{{ MEDIA_URL }}aerogelonahand.gif'
+		 alt='Aerogel' />
+	<a href='{% url "rango:index" %}' style='display:block;'>Index Page</a>
+
+{% endblock %}

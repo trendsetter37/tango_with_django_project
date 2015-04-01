@@ -1,0 +1,41 @@
+{% extends 'rango/base.html' %}
+
+{% comment %}
+	The tango with django 1.7 book exercise
+{% endcomment %}
+
+{% block title %}Home{% endblock %}
+{% load staticfiles %}
+
+{% block body_block %}
+
+	{% if user.is_authenticated %}
+	<h1>Rango says...hello {{ user.username }}!</h1>
+	{% else %}
+	<h1>Rango says...hello world!</h1>
+	{% endif %}
+	{% if categories %}
+		<ul>
+			{% for category in categories %}
+				<li><a href="{% url 'rango:category' category.slug %}">{{ category.name }}</a></li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<strong>There are no categories present.</strong>
+	{% endif %}
+	<h2>Top 5 Pages</h2>
+	{% if top_five_pages %}
+		<ul>
+			{% for page in top_five_pages %}
+				<li><a href="{{ page.url }}">{{ page.title }}</a></li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+	
+	<p> visits: {{ visits }}</p>
+	<br>
+
+	<img src="{% static 'images/rango.jpg' %}" alt="Picture of Rango" />
+	{% endblock %}
+
+</html>

@@ -1,0 +1,15 @@
+{% extends 'rango/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}Does Not Exist{% endblock %}
+
+{% block body_block %}
+	
+		<h1>Get outta here!</h1>
+		<p>The category: '{{ category }}' that you manually typed into the address bar does not exist sir!</p>
+		<br />
+		<a href="{% url 'rango:add_category' placeholder=category %}">Create category</a>
+		<br />
+		<a href="{% url 'rango:index' %}">Go home</a>
+{% endblock %}
